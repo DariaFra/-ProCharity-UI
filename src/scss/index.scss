@@ -1,0 +1,62 @@
+@use './variables' as *; 
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background;
+  color: #333;
+}
+
+header, footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+a {
+  margin: 0 10px;
+  color: $colorMajor;
+  text-decoration: none;
+  font-size: $fontSizeMajor;
+}
+
+.container {
+  height: 50vh;
+  margin: 0 auto;
+  padding: 70px;
+  background: $containerBackground;
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px
+}
+
+button {
+  background-color: $btnBackground;
+  color: $colorBtnText;
+  border: none;
+  padding: 10px 20px;
+  font-size: $fontSizeMajor;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #e64a19; 
+}
+
+input {
+  display: block;
+  width: 90%;
+  margin: 30px 20px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #374146;
+  border-radius: 6px;
+}
