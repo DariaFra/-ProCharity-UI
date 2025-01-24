@@ -1,0 +1,74 @@
+@use './variables' as *; 
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background;
+  color: #333;
+}
+
+header, footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+h1, h2 {
+  text-align: center;
+  font-size: $fontSizeTitle;
+}
+
+a {
+  margin: 0 10px;
+  color: $colorMajor;
+  text-decoration: none;
+  font-size: $fontSizeMajor;
+}
+
+.container {
+  height: 90vh;
+  margin: 0 auto;
+  padding: 70px;
+  background: $containerBackground;
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+button {
+  background-color: $btnBackground;
+  color: $colorBtnText;
+  border: none;
+  padding: 10px 20px;
+  font-size: $fontSizeMajor;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #e64a19; 
+}
+
+input {
+  display: block;
+  width: 90%;
+  margin: 30px 20px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #374146;
+  border-radius: 6px;
+}
