@@ -15,6 +15,11 @@ header, footer {
   padding: 10px 0;
 }
 
+h1, h2 {
+  text-align: center;
+  font-size: $fontSizeTitle;
+}
+
 a {
   margin: 0 10px;
   color: $colorMajor;
@@ -23,7 +28,7 @@ a {
 }
 
 .container {
-  height: 50vh;
+  height: 90vh;
   margin: 0 auto;
   padding: 70px;
   background: $containerBackground;
@@ -35,6 +40,13 @@ a {
   flex-direction: row;
   justify-content: center;
   gap: 30px
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 button {

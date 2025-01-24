@@ -1,10 +1,8 @@
 import React, {
     AnchorHTMLAttributes,
-    FunctionComponent,
     MouseEvent,
     ReactNode
 } from 'react';
-// import { AnchorProps } from './anchor';
 import { AnchorContext } from './AnchorContext';
 
 export type LinkValue = | string | ((event: MouseEvent<HTMLAnchorElement>) => void);
@@ -15,19 +13,11 @@ export type AnchorProps = {
     className?: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-// export type AnchorProps = Omit<
-// AnchorHTMLAttributes<HTMLAnchorElement>,
-// 'href'
-// > & {
-//     href?: LinkValue;
-// };
+export type LinkTag = 'a' | React.ComponentType<AnchorProps>;
 
-export type LinkTag = 'a' | React.FunctionComponent<AnchorProps>;
-// | keyof Pick<React.JSX.IntrinsicElements, 'a'>
-// | FunctionComponent<AnchorProps>;
 
 export type AnchorContextType = {
-    LinkElement?: FunctionComponent<AnchorProps>;
+    LinkElement?: React.ComponentType<AnchorProps>
     ignoreFn?: (href: string) => boolean;
 }
 
@@ -42,5 +32,3 @@ export function AnchorProvider({ children, LinkElement, ignoreFn}: AnchorProvide
         </AnchorContext.Provider>
     )
 }
-
-

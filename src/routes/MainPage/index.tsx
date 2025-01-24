@@ -1,55 +1,36 @@
-// import { ReactNode, Suspense } from 'react'
 
-
-// import { Form } from '@/components/Form/Form';
-import { result } from 'lodash';
+import { getMainDate } from '@/api/mainPage';
 import { lazy, Suspense } from 'react';
 import { ActionFunctionArgs, Form, LoaderFunctionArgs, useLoaderData } from 'react-router'
-import { MainPage } from './mainPage';
 
-const LazyMainPage = lazy(() =>
-    import('./mainPage').then(module => ({
-        default: module.MainPage
+const LazyMainPageDisplay = lazy(() =>
+    import('./MainPage').then(module => ({
+        default: module.MainPageDisplay
 })))
 
 
-// const MainPage = (
-//     props: JSX.IntrinsicAttributes & { children?: React.ReactNode }) => {
-//         const data = useLoaderData<LoaderResponse>();
-//         // const { Tag = 'form', className, children } = props.formSettings;
+const MainPage = (
+    props: JSX.IntrinsicAttributes & { children?: React.ReactNode }) => {
 
-//         return (
-//             <Suspense fallback={<p>Loading...</p>}>
-//                 <LazyMainPage {...props} formSettings={{
-//                     Tag: Form,
-//                 }} >  
-//                   {/* {typeof Tag === 'string' ? (
-//                     <Tag className={className}>{children}</Tag>
-//                 ) : (
-//                     <Tag className={className}>{children}</Tag>
-//                 )} */}
-//                 </LazyMainPage>
-//             </Suspense>
-//         )
-//     }
+        return (
+            <Suspense fallback={<p>Loading...</p>}>
+                 <LazyMainPageDisplay {...props} />
+            </Suspense>
+        )
+    }
 
-async function action({params, request}: ActionFunctionArgs) {
-    const data = await request.formData();
-    const payload = Object.fromEntries(data.entries()) as object
-    return null;
-    
-}
+// async function action({params, request}: ActionFunctionArgs) {
+//     const data = await request.formData();
+//     const payload = Object.fromEntries(data.entries()) as object;
+//     return null;
+// }
 
-export type LoaderResponse = Awaited<ReturnType<typeof loader>>
 
 async function loader({params, request}: LoaderFunctionArgs) {
-    return Promise.resolve({
-        result: 'Ok'
-    })
+    return getMainDate();
 }
 
 export default {
     loader,
-    action,
     element: <MainPage />
 }

@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { ActinTag, ButtonType, ButtonVariant } from './types';
 import clsx from 'clsx';
-import { Anchor } from '../Anchor/anchor';
 import styles from './Action.module.scss'
 
-export type ButtonProps = {
+export type ActionProps = {
   type?: ButtonType | keyof typeof ButtonType;
   variant?: ButtonVariant | keyof typeof ButtonVariant;
+
   disabled?: boolean;
   onClick?: () => void;
   className?: string;
@@ -16,50 +16,35 @@ export type ButtonProps = {
   Tag?: ActinTag;
 }
 
-const withAction = (defaults: ButtonProps) => {
-  return function Action(props: ButtonProps) {
-    let { className, children, disabled, type, href, variant, Tag, ...rest } = {...defaults, ...props };
-    Tag = Tag || 'button';
-    const TagElement = (Tag === 'a') ? Anchor : Tag;
+const withAction = (defaults: ActionProps) => {
+  return function Action(props: ActionProps) {
+    const { className, children, onClick, disabled, type, variant = 'primary', href, Tag = 'button', ...rest } = {...defaults, ...props };
 
-    variant = variant || 'primary';
-
+    if(Tag === 'a') {
       return (
-    <TagElement
-      {...rest} 
-      type={Tag === 'button' ? type : undefined}
-      href = {Tag =='a' ? href : undefined}
-      disabled={disabled}
-      className = 
-      {clsx(styles.button, styles[variant], className, {
-      [styles.disabled]: disabled
-    })}
-    >
-        {children} 
-  </TagElement>
-  )
+        <a href={href} className={clsx(styles.action, className)} {...rest}>
+          {children}
+        </a>
+      )
+    }
+
+    return (
+      <button
+        onClick={onClick}
+        className={clsx(styles.action, className)}
+        {...rest}>
+        {children}
+      </button>
+    )
   }
 }
 
-export type LinkProps = {
-  href: string;
-  children: ReactNode;
-}
-
-export const Action = withAction({})
-
 export const Button = withAction({
   Tag: 'button',
+  type: 'button',
   variant: 'primary'
 })
 
 export const Link = withAction ({
-  Tag: 'a',
-  variant: 'link'
-})
-
-export const Sumbit = withAction({
-  Tag: 'button',
-  type: 'submit',
-  variant: 'primary'
+  Tag: 'a'
 })

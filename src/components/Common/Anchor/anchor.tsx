@@ -6,9 +6,6 @@ import { AnchorProps } from "./AnchorProvider";
 
 
 export const Anchor: FC<AnchorProps> = ({ className, href, children }) => {
-    // if (!href) {
-    //     throw new Error('href is required');
-    // }
     const LinkElement = useAnchor(href);
     const propsLink = useLinkProps(href);
     return (

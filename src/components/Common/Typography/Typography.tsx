@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypographyProps, TypographyVariants } from './types';
+import { TextTag, TitleTag, TypographyProps, TypographyVariants } from './types';
 import styles from './Typography.module.scss'
 import clsx from 'clsx';
 
@@ -22,7 +22,16 @@ export const withTypography = (defaults: TypographyProps) => {
   }
 }
 
-export const Typography: React.FC<TypographyProps> = withTypography({
-  variant: TypographyVariants.normal, 
-  Tag: "span",                      
-});
+export const Typography: React.FC<TypographyProps> = withTypography({});
+
+
+export const Text: React.FC<TypographyProps<TextTag>> = withTypography({
+  variant: 'normal', 
+  Tag: 'span',
+})
+
+export const Title: React.FC<TypographyProps<TitleTag>> = withTypography({
+  variant: 'title', 
+  Tag: 'h2',
+})
+

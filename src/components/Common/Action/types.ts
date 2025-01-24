@@ -1,6 +1,4 @@
-import { FunctionComponent } from "react";
-
-export type ActinTag = keyof Pick<React.JSX.IntrinsicElements, 'a' | 'button' | FunctionComponent>
+export type ActinTag =  'a' | 'button';
 
 export enum ButtonVariant {
     primary = 'primary',

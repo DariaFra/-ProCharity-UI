@@ -2,8 +2,10 @@ interface RegisterData {
     message: string;
 }
 
-export const getregisterDate = (): Promise<RegisterData> => {
-    return Promise.resolve({
-        message: 'Register Page'
+export const getRegisterDate = (): Promise<RegisterData> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve ({message: 'Register Page'})
+        }, 500)
     })
 }

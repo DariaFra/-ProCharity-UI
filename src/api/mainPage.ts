@@ -1,9 +1,11 @@
-interface ManeData {
+interface MainData {
     message: string;
 }
 
-export const getManeDate = (): Promise<ManeData> => {
-    return Promise.resolve({
-        message: 'Mane Page'
-    })
+export const getMainDate = (): Promise<MainData> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve ({message: 'Main Page'})
+        }, 500)    
+    });
 }

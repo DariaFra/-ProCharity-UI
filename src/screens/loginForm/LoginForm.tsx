@@ -1,11 +1,11 @@
 import { Button } from "@/components/Common/Action/action";
-import { InputEmail, InputPassword } from "@/components/Form/Input/input";
-// import { Title } from "@/components/Common/Typography/Typography";
-// import { Field } from "@/components/Form/Field/Field";
+import { InputEmail, InputPassword } from "@/components/Common/Input/Input";
 import clsx from 'clsx'
 import styles from './LoginForm.module.scss'
-import { Form, FormProps } from "@/components/Form/Form";
+import { FormProps } from "@/components/Form/Form";
 import { Field } from "@/components/Form/Field/Field";
+import { Title } from "@/components/Common/Typography/Typography";
+import { Form } from "react-router";
 
 
 export type LoginFormProps = {
@@ -14,15 +14,15 @@ export type LoginFormProps = {
 }
 
 export function LoginForm({ className, formSettings }: LoginFormProps) {
-    return <Form {...formSettings} method = 'post' className={clsx(styles.container, className)}
+    return <Form {...formSettings} action='/login' method = 'POST' className={clsx(styles.container, className)}
     >
-        {/* <Title>Sing In</Title> */}
+        <Title>Sing In</Title>
         <Field>
-            <InputEmail name="email" placeholder="email@example.com" />
+            <InputEmail placeholder="email@example.com" />
         </Field>
         <Field>
-            <InputPassword name="password" placeholder="password" />
+            <InputPassword placeholder="password" />
         </Field>
-        <Button type="submit" name="singin">Sing In</Button>
+        <Button type="button" name="singin">Sing In</Button>
     </Form>
 }

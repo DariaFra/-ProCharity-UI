@@ -2,8 +2,10 @@ interface LoginData {
     message: string;
 }
 
-export const getLogingDate = (): Promise<LoginData> => {
-    return Promise.resolve({
-        message: 'Login Page'
+export const getLoginDate = (): Promise<LoginData> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve ({message: 'Login Page'})
+        }, 500)
     })
 }

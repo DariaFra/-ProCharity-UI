@@ -7,7 +7,7 @@ function LayoutWrapper() {
 	return (
 	<AnchorProvider 
 	LinkElement={({ href, ...props }) => {
-		return <Link {...props} to={href as string}/>
+		return href ? <Link {...props} to={href as string}/> : null
 	}}
 	>
 		<Layout>

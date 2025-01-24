@@ -1,12 +1,11 @@
-import { InputEmail, InputPassword, InputText } from "@/components/Form/Input/input";
-// import { Form } from '../../containers/Form/form'
+import { InputEmail, InputPassword, InputText } from "@/components/Common/Input/Input";
 import { Field } from "@/components/Form/Field/Field";
-// import { Title } from "@/components/Common/Typography/Typography";
-// import { Form, FormProps } from "@/components/Action/Form/Form";
 import { Button } from "@/components/Common/Action/action";
 import styles from './RegisterForm.module.scss'
 import clsx from "clsx";
-import { Form, FormProps } from "@/components/Form/Form";
+import { FormProps } from "@/components/Form/Form";
+import { Title } from "@/components/Common/Typography/Typography";
+import { Form } from "react-router";
 
 export type RegisterFormProps = {
     className?: string;
@@ -14,20 +13,20 @@ export type RegisterFormProps = {
 }
 
 export function RegisterForm({ className, formSettings }: RegisterFormProps) {
-    return <Form {...formSettings} method = 'post' className={clsx(styles.container, className)}
+    return <Form {...formSettings} action='/register' method = 'post' className={clsx(styles.container, className)}
     >
-        {/* <Title>Sing Up</Title> */}
+        <Title>Sing Up</Title>
         <Field>
-            <InputText name="name" placeholder="Name" />
+            <InputText placeholder="name" />
         </Field>
         <Field>
-            <InputEmail name="email" placeholder="email@example.com" />
+            <InputEmail placeholder="email@example.com" />
         </Field>
         <Field>
-            <InputPassword name="password" placeholder="password" />
+            <InputPassword placeholder="password" />
         </Field>
         <Field>
-            <InputPassword name="repeat password" placeholder="repeat password" />
+            <InputPassword placeholder="repeat password" />
         </Field>
         <Button type="submit" name="singup">Sing Up</Button>
     </Form>
